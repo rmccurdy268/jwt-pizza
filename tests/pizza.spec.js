@@ -229,25 +229,11 @@ test('register new user, log out', async ({ page }) => {
     await page.getByRole('link', { name: 'Logout' }).click();
     await expect(page.locator('#navbar-dark')).toContainText('Login');
 });
-//
-//test('re t', async ({ page }) => {
-//    await page.goto('http://localhost:5173/');
-//    await page.getByRole('link', { name: 'Register' }).click();
-//    await page.getByPlaceholder('Full name').fill('Rhodric');
-//    await page.getByPlaceholder('Full name').press('Tab');
-//    await page.getByPlaceholder('Email address').fill('test.user@gmail.com');
-//    await page.getByPlaceholder('Email address').press('Tab');
-//    await page.getByPlaceholder('Password').fill('password');
-//    await page.getByRole('button', { name: 'Register' }).click();
-//    await page.getByRole('link', { name: 'Order' }).click();
-//    await page.getByLabel('Global').getByRole('link', { name: 'Franchise' }).click();
-//    await page.getByRole('link', { name: 'R', exact: true }).click();
-//    await expect(page.getByRole('main')).toContainText('How have you lived this long without having a pizza? Buy one now!');
-//    await page.getByRole('link', { name: 'Logout' }).click();
-//    await expect(page.locator('#navbar-dark')).toContainText('Login');
-//
-//});
-//
-test('try out about page', async ({ page }) => {
 
+test('try out about page', async ({ page }) => {
+    await page.goto('http://localhost:5173/');
+    await page.getByRole('link', { name: 'About' }).click();
+    await expect(page.getByRole('main')).toContainText('At JWT Pizza, our amazing employees are the secret behind our delicious pizzas. They are passionate about their craft and spend every waking moment dreaming about how to make our pizzas even better. From selecting the finest ingredients to perfecting the dough and sauce recipes, our employees go above and beyond to ensure the highest quality and taste in every bite. Their dedication and attention to detail make all the difference in creating a truly exceptional pizza experience for our customers. We take pride in our team and their commitment to delivering the best pizza in town.');
+    await expect(page.getByRole('main').getByRole('img').first()).toBeVisible();
+    await expect(page.getByRole('main')).toContainText('Our employees');
 });
