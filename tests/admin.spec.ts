@@ -111,6 +111,7 @@ test.describe('admin tests', () =>{
       await route.fulfill({ json: storeRes });
     });
     await page.getByRole('link', { name: 'Franchise' }).click();
+    await expect(page.getByRole('heading')).toContainText('adminFranchise');
     await page.getByRole('button', { name: 'Create store' }).click();
     await page.getByPlaceholder('store name').click();
     await page.getByPlaceholder('store name').fill('firstStore');
