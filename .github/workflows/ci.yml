@@ -1,5 +1,4 @@
 name: CI Pipeline
-
 on:
   push:
     branches:
@@ -9,9 +8,6 @@ jobs:
   build:
     name: Build
     runs-on: ubuntu-latest
-    environment:
-      name: staging
-      url: https://stage-pizza.pizzeriasophia.click 
     outputs:
       version: ${{ steps.set_version.outputs.version }}
     steps:
@@ -63,6 +59,9 @@ jobs:
     runs-on: ubuntu-latest
     env:
       version: ${{needs.build.outputs.version}}
+    environment:
+      name: staging
+      url: https://stage-pizza.pizzeriasophia.click 
     steps:
       - name: Create OIDC token to AWS
         uses: aws-actions/configure-aws-credentials@v4
