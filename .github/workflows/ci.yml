@@ -9,6 +9,9 @@ jobs:
   build:
     name: Build
     runs-on: ubuntu-latest
+    environment:
+      name: production
+      url: https://pizza.pizzeriasophia.click  
     outputs:
       version: ${{ steps.set_version.outputs.version }}
     steps:
